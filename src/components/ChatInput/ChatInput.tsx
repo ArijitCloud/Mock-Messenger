@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "./ChatInput.css";
 
 interface ChatInputProps {
   readonly maxRows?: number;
@@ -16,7 +17,7 @@ function ChatInput({ maxRows, onSendClick }: ChatInputProps) {
   };
   return (
     <div className="chat-input-container">
-      <textarea ref={textAreaRef} rows={maxRows || 4}></textarea>
+      <textarea ref={textAreaRef} rows={maxRows || 4} placeholder="start typing here.."></textarea>
       <button onClick={onSendButtonClick}>Send</button>
     </div>
   );

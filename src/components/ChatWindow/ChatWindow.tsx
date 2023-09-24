@@ -1,5 +1,6 @@
 import ChatInput from "../ChatInput/ChatInput";
 import { Friend } from "../FriendList/FriendList";
+import "./ChatWindow.css";
 
 export type Conversation = {
   message: string;

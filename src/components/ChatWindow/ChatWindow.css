@@ -1,13 +1,13 @@
 .chat-header{
     font-weight: 600;
+    position: sticky;
 }
 
 .chat-messages{
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    max-height: 600px;
-    background-color: aquamarine;
+    height: 50vh;
 }
 
 .chat-input{
