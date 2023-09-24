@@ -1,15 +1,14 @@
 import React from "react";
 import "./App.css";
-import ChatWindow, { Conversation } from "./components/ChatWindow/ChatWindow";
-import FriendList, { Friend } from "./components/FriendList/FriendList";
+import ChatWindow from "./components/ChatWindow/ChatWindow";
+import FriendList from "./components/FriendList/FriendList";
 import { FriendsData } from "./mocks/FriendsData";
+import { Conversation, ConversationMap, Friend } from "./types";
 
-type ConversationMap = {
-  email: string;
-  conversation: Array<Conversation>;
-};
-
-const loadAllConversation = () => {
+/**
+ * Load initial conversation based on mock friend list
+ */
+const loadInitialConversation = () => {
   return FriendsData.map((friend) => {
     return {
       email: friend.email,
@@ -20,11 +19,14 @@ const loadAllConversation = () => {
 
 function App() {
   const [allConversation, setAllConversation] =
-    React.useState<Array<ConversationMap>>(loadAllConversation);
+    React.useState<Array<ConversationMap>>(loadInitialConversation);
   const [currentConversation, setCurrentConversation] =
     React.useState<Array<Conversation>>();
   const [currentFriend, setCurrentFriend] = React.useState<Friend>();
 
+  /**
+   * Load conversation for a selected friend   
+   */
   const loadFriendChat = (friend: Friend) => {
     const currentFriendConversation = allConversation.find(
       (c) => c.email === friend.email
@@ -33,6 +35,9 @@ function App() {
     setCurrentConversation(currentFriendConversation?.conversation);
   };
 
+   /**
+   * Update conversation for a new message   
+   */
   const onNewMessage = (email: string, message: Conversation) => {
     setAllConversation((prev) => {
       return prev.map((conversationMap) => {
@@ -51,6 +56,7 @@ function App() {
       return prev ? [...prev, message] : [message];
     });
   };
+
   return (
     <div className="mock-messenger">
       <div className="friend-list-panel">

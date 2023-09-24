@@ -1,9 +1,7 @@
+import { Friend } from "../../types";
 import "./FriendList.css";
 
-export type Friend = {
-  email: string;
-  name: string;
-};
+
 interface FriendListProps {
   readonly friends: ReadonlyArray<Friend>;
   readonly onLoadFriendChat: (friend: Friend) => void;

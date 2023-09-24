@@ -1,11 +1,7 @@
+import { Conversation, Friend } from "../../types";
+import ChatConversation from "../ChatConversation/ChatConversation";
 import ChatInput from "../ChatInput/ChatInput";
-import { Friend } from "../FriendList/FriendList";
 import "./ChatWindow.css";
-
-export type Conversation = {
-  message: string;
-  timestamp: number;
-};
 
 interface ChatWindowProps {
   readonly friend: Friend;
@@ -17,6 +13,7 @@ const chatHeaderText = "Chat with ";
 
 function ChatWindow({ conversation, friend, onNewMessage }: ChatWindowProps) {
   const onChatSend = (message: string) => {
+    //send friend email and conversation object to update conversation
     onNewMessage(friend.email, { message, timestamp: Date.now() });
   };
   return (
@@ -24,12 +21,12 @@ function ChatWindow({ conversation, friend, onNewMessage }: ChatWindowProps) {
       <div className="chat-header">
         <h3>{chatHeaderText + friend.name}</h3>
       </div>
-      <div className="chat-messages">
-        {conversation &&
-          conversation.map((c,index) => {
-            return <div key={c.timestamp+index}>{c?.message}</div>;
-          })}
-      </div>
+      {conversation && (
+        <ChatConversation
+          friendName={friend.name}
+          conversation={conversation}
+        />
+      )}
       <ChatInput onSendClick={onChatSend} />
     </>
   );

@@ -1,0 +1,20 @@
+.chat-messages{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 50vh;
+}
+
+.message-item{
+    display: flex;
+}
+
+.chat-user{
+    font-weight: 600;
+    margin-right: 1 rem;
+}
+
+.chat-message{
+    font-weight: 400;
+    margin-left: 1rem;
+}
