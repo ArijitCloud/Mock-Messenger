@@ -57,12 +57,14 @@ function App() {
         <FriendList friends={FriendsData} onLoadFriendChat={loadFriendChat} />
       </div>
       <div className="chat-panel">
-        {currentFriend && (
+        {currentFriend ? (
           <ChatWindow
             conversation={currentConversation}
             friend={currentFriend}
             onNewMessage={onNewMessage}
           />
+        ) : (
+          <div>Select a friend to start chat</div>
         )}
       </div>
     </div>
