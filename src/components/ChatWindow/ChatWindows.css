@@ -1,0 +1,17 @@
+.chat-header{
+    font-weight: 600;
+}
+
+.chat-messages{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: 600px;
+    background-color: aquamarine;
+}
+
+.chat-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -5,3 +5,17 @@
   text-align: center;
   width: 100%;
 }
+
+.mock-messenger{
+  display: flex;
+}
+
+.friend-list-panel{
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-panel{
+  display: flex;
+  flex-direction: column;
+}
