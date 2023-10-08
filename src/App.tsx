@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ChatWindow from "./components/ChatWindow/ChatWindow";
 import FriendList from "./components/FriendList/FriendList";
 import { FriendsData } from "./mocks/FriendsData";
 import { Conversation, ConversationMap, Friend } from "./types";
+import HamburgerButton from "./components/HamburgerButton/HamburgerButton";
 
 /**
  * Load initial conversation based on mock friend list
@@ -57,9 +58,16 @@ function App() {
     });
   };
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="mock-messenger">
-      <div className="friend-list-panel">
+      <HamburgerButton onButtonClick={toggleMenu}/>
+      <div className={`friend-list-panel ${menuOpen?"open":""}`}>
         <FriendList friends={FriendsData} onLoadFriendChat={loadFriendChat} />
       </div>
       <div className="chat-panel">
